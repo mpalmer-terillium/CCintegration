@@ -9,8 +9,11 @@ import static com.paytrace.integration.constants.IntegrationConstants.*;
 
 import java.util.logging.Logger;
 
+import javax.ejb.Stateless;
+
 import javax.jws.WebService;
 
+@Stateless
 @WebService(endpointInterface="com.paytrace.integration.service.CCIntegrationService")
 public class CCIntegrationServiceImpl implements CCIntegrationService {
     
