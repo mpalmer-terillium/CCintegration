@@ -67,12 +67,16 @@ public class InternalIntegrationProcessor {
                 HttpResponse response = httpClient.execute(httpPost);
                 HttpEntity entity = response.getEntity();
                 
+                
                 if (entity != null) {
                     IntegrationUtility.mapIntegrationResponse(EntityUtils.toString(entity), integrationResponse);
                 }
             } catch (Exception e) {
                     e.printStackTrace();
                     integrationResponse.setResponse(e.getMessage());
+                    
+            } finally {
+                httpPost.releaseConnection();
             }
         } else {
             integrationResponse.setResponse(PROCESSING_ERROR_MSG);
