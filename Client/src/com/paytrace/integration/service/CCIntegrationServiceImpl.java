@@ -1,13 +1,11 @@
 package com.paytrace.integration.service;
 
+import static com.paytrace.integration.constants.IntegrationConstants.ERROR;
+import static com.paytrace.integration.constants.IntegrationConstants.PROCESSING_ERROR_MSG;
 import com.paytrace.integration.internalprocessor.InternalIntegrationProcessor;
-
 import com.paytrace.integration.response.IntegrationResponse;
 import com.paytrace.integration.util.IntegrationUtility;
 import com.paytrace.integration.valueobject.ExternalValueObject;
-import static com.paytrace.integration.constants.IntegrationConstants.*;
-
-import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 

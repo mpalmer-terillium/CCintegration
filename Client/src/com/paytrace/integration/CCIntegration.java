@@ -1,8 +1,8 @@
 package com.paytrace.integration;
 
 
-import com.paytrace.integration.service.CCIntegrationService;
 import com.paytrace.integration.service.CCIntegrationServiceImpl;
+
 import javax.xml.ws.Endpoint;
 
 
