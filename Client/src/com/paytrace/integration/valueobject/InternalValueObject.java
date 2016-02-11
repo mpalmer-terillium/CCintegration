@@ -29,14 +29,14 @@ public class InternalValueObject {
     
     
     public InternalValueObject(String un, 
-                       String pw, 
-                       String method, 
-                       String trns, 
-                       char terms,
-                       String cc, 
-                       int expmnth, 
-                       int expyr, 
-                       double amount) {
+                               String pw, 
+                               String method, 
+                               String trns, 
+                               char terms,
+                               String cc, 
+                               int expmnth, 
+                               int expyr, 
+                               double amount) {
         this.un = un;
         this.pswd = pw;
         this.transxtype = trns;
