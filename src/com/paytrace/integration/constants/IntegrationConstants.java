@@ -47,7 +47,7 @@ public final class IntegrationConstants {
     public static final String PAYTRACE_APPCODE         = "APPCODE";
     public static final String PAYTRACE_RESPONSE        = "RESPONSE";
     
-    public static final String TRANS_TYPE_AUTHORIZATION = "Authorize";
+    public static final String TRANS_TYPE_AUTHORIZATION = "Authorization";
     public static final String TRANS_TYPE_SALE          = "Sale";
     public static final String TRANS_TYPE_CAPTURE       = "Capture";
     public static final String TRANS_TYPE_VERIFY        = "Verify";

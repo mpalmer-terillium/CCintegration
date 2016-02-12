@@ -17,7 +17,6 @@ import src.com.paytrace.integration.valueobject.ExternalValueObject;
 
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 @WebService(serviceName = "CCIntegrationService", portName = "IntegrationPort")
-@BindingType(javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
 public class CCIntegrationServiceImpl implements CCIntegrationService {
     
     /**
