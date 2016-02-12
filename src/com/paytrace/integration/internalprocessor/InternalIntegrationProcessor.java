@@ -1,9 +1,9 @@
-package com.paytrace.integration.internalprocessor;
+package src.com.paytrace.integration.internalprocessor;
 
-import com.paytrace.integration.response.IntegrationResponse;
-import com.paytrace.integration.util.IntegrationUtility;
-import com.paytrace.integration.valueobject.InternalValueObject;
-import static com.paytrace.integration.constants.IntegrationConstants.*;
+import src.com.paytrace.integration.response.IntegrationResponse;
+import src.com.paytrace.integration.util.IntegrationUtility;
+import src.com.paytrace.integration.valueobject.InternalValueObject;
+import static src.com.paytrace.integration.constants.IntegrationConstants.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+
 
 public class InternalIntegrationProcessor {
     

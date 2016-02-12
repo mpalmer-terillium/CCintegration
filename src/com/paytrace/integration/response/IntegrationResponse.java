@@ -1,4 +1,4 @@
-package com.paytrace.integration.response;
+package src.com.paytrace.integration.response;
 
 public class IntegrationResponse {
     

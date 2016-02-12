@@ -1,4 +1,4 @@
-package com.paytrace.integration.constants;
+package src.com.paytrace.integration.constants;
 
 /**
  * Most of these will be defined by the host system, and will be passed in from there.  They exist here to simplify

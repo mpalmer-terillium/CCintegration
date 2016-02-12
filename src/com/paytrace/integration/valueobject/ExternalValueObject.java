@@ -1,4 +1,4 @@
-package com.paytrace.integration.valueobject;
+package src.com.paytrace.integration.valueobject;
 
 public class ExternalValueObject {
 

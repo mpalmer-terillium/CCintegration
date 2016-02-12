@@ -1,18 +1,23 @@
-package com.paytrace.integration.service;
+package src.com.paytrace.integration.service;
 
-import static com.paytrace.integration.constants.IntegrationConstants.ERROR;
-import static com.paytrace.integration.constants.IntegrationConstants.PROCESSING_ERROR_MSG;
-import com.paytrace.integration.internalprocessor.InternalIntegrationProcessor;
-import com.paytrace.integration.response.IntegrationResponse;
-import com.paytrace.integration.util.IntegrationUtility;
-import com.paytrace.integration.valueobject.ExternalValueObject;
-
-import javax.ejb.Stateless;
-
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 
-@Stateless
-@WebService(endpointInterface="com.paytrace.integration.service.CCIntegrationService")
+import javax.xml.ws.BindingType;
+
+import static src.com.paytrace.integration.constants.IntegrationConstants.ERROR;
+import static src.com.paytrace.integration.constants.IntegrationConstants.PROCESSING_ERROR_MSG;
+import src.com.paytrace.integration.internalprocessor.InternalIntegrationProcessor;
+import src.com.paytrace.integration.response.IntegrationResponse;
+import src.com.paytrace.integration.util.IntegrationUtility;
+import src.com.paytrace.integration.valueobject.ExternalValueObject;
+
+
+@SOAPBinding(style = SOAPBinding.Style.RPC)
+@WebService(serviceName = "CCIntegrationService", portName = "IntegrationPort")
+@BindingType(javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
 public class CCIntegrationServiceImpl implements CCIntegrationService {
     
     /**
@@ -25,7 +30,8 @@ public class CCIntegrationServiceImpl implements CCIntegrationService {
      * @return IntegrationResponse
      */
     @Override
-    public IntegrationResponse processExternalRequest(ExternalValueObject evo) {
+    @WebMethod
+    public IntegrationResponse processExternalRequest(@WebParam(name = "arg0") ExternalValueObject evo) {
         
         InternalIntegrationProcessor processor = new InternalIntegrationProcessor(IntegrationUtility.initVO(evo));
         IntegrationResponse response;

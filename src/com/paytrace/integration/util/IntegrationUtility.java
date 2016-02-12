@@ -1,9 +1,9 @@
-package com.paytrace.integration.util;
+package src.com.paytrace.integration.util;
 
-import com.paytrace.integration.response.IntegrationResponse;
-import com.paytrace.integration.valueobject.ExternalValueObject;
-import com.paytrace.integration.valueobject.InternalValueObject;
-import static com.paytrace.integration.constants.IntegrationConstants.*;
+import src.com.paytrace.integration.response.IntegrationResponse;
+import src.com.paytrace.integration.valueobject.ExternalValueObject;
+import src.com.paytrace.integration.valueobject.InternalValueObject;
+import static src.com.paytrace.integration.constants.IntegrationConstants.*;
 
 import java.util.HashMap;
 import java.util.Map;
