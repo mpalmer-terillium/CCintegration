@@ -61,7 +61,7 @@ public class InternalIntegrationProcessor {
         
         IntegrationResponse integrationResponse = new IntegrationResponse();
         
-        if(nameValuePairList != null) {
+        if(!nameValuePairList.isEmpty()) {
             try {
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairList));
     

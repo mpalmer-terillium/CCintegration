@@ -30,7 +30,7 @@ public class CCIntegrationServiceImpl implements CCIntegrationService {
      */
     @Override
     @WebMethod
-    public IntegrationResponse processExternalRequest(@WebParam(name = "externalRequest") ExternalValueObject evo) {
+    public IntegrationResponse processExternalRequest(@WebParam(name = "externalValueObject") ExternalValueObject evo) {
         
         InternalIntegrationProcessor processor = new InternalIntegrationProcessor(IntegrationUtility.initVO(evo));
         IntegrationResponse response;
