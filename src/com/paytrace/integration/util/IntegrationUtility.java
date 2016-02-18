@@ -1,5 +1,10 @@
 package src.com.paytrace.integration.util;
 
+import java.io.InputStream;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import src.com.paytrace.integration.response.IntegrationResponse;
 import src.com.paytrace.integration.valueobject.ExternalValueObject;
 import src.com.paytrace.integration.valueobject.InternalValueObject;
@@ -8,6 +13,9 @@ import static src.com.paytrace.integration.constants.IntegrationConstants.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
+
+import javax.xml.bind.JAXBContext;
+import src.com.paytrace.integration.valueobject.SoftCodingCredentials;
 
 
 public class IntegrationUtility {
@@ -23,7 +31,10 @@ public class IntegrationUtility {
     public static InternalValueObject initVO(ExternalValueObject evo) {
         InternalValueObject internalVO;
         
-        if (evo.getTransactionType().equalsIgnoreCase(TRANS_TYPE_AUTHORIZATION) ||
+        if (evo.getTransactionType().isEmpty()) {
+            internalVO = new InternalValueObject(ERROR);
+            
+        }else if (evo.getTransactionType().equalsIgnoreCase(TRANS_TYPE_AUTHORIZATION) ||
             evo.getTransactionType().equalsIgnoreCase(TRANS_TYPE_SALE)) {
             
             internalVO = new InternalValueObject(evo.getUsername(), 
@@ -148,5 +159,35 @@ public class IntegrationUtility {
      */
     private static String tokenize(String pre, String post) {
         return pre + "~" + post + "|";
+    }
+    
+    public static SoftCodingCredentials securitySetup() {
+        return setUsernamePassword(new SoftCodingCredentials());
+    }
+    
+    /**
+     * this is a mock softcoding call - it will be used in JDE to get user information, currently running locally
+     * as another (here REST) service.
+     * 
+     * @param scr 
+     * @return SoftCodingCredentials
+     */
+    private static SoftCodingCredentials setUsernamePassword(SoftCodingCredentials scr) {
+        try {
+            URL url = new URL("http://127.0.0.1:7101/MockSoftCodingService/softcoding/credentials/getUnPwd");
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/xml");
+            
+            JAXBContext jaxbContext = JAXBContext.newInstance(SoftCodingCredentials.class);
+            InputStream xml = connection.getInputStream();
+            
+            scr = (SoftCodingCredentials) jaxbContext.createUnmarshaller().unmarshal(xml);
+            
+            connection.disconnect();
+        } catch (Exception e) {
+            logger.severe(e.toString());
+        }
+        return scr;
     }
 }

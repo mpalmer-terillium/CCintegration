@@ -4,7 +4,9 @@ import java.util.logging.Logger;
 
 import src.com.paytrace.integration.response.IntegrationResponse;
 import src.com.paytrace.integration.service.CCIntegrationServiceImpl;
+import src.com.paytrace.integration.util.IntegrationUtility;
 import src.com.paytrace.integration.valueobject.ExternalValueObject;
+import src.com.paytrace.integration.valueobject.SoftCodingCredentials;
 
 public class TestCCIntegrationService {
     
@@ -17,18 +19,31 @@ public class TestCCIntegrationService {
     public static void main(String[] args) {
         
         CCIntegrationServiceImpl service = new CCIntegrationServiceImpl();
-        ExternalValueObject externalValueObject = new ExternalValueObject();
-        
-        externalValueObject.setUsername("username");
-        externalValueObject.setPassword("password");
-        
-        externalValueObject.setAmount(100.00);
-        externalValueObject.setTransactionType("transactionType");
-        
-        // etc.
+        ExternalValueObject externalValueObject = initExternalValueObject(new ExternalValueObject());
         
         IntegrationResponse response = service.processExternalRequest(externalValueObject);
         
         logger.info(response.getAvsresponse());
     }
+    
+    private static ExternalValueObject initExternalValueObject(ExternalValueObject externalValueObject) {
+
+        SoftCodingCredentials scr = IntegrationUtility.securitySetup();
+        
+        externalValueObject.setUsername(scr.getUsername());
+        externalValueObject.setPassword(scr.getPassword());
+        
+        externalValueObject.setParmName("PARMLIST");
+        externalValueObject.setMethod("processtransx");
+        externalValueObject.setTerms('Y');
+        externalValueObject.setTransactionType("Authorization");
+        externalValueObject.setAmount(100.00);
+        externalValueObject.setCreditCardNumber("4012881888818888");
+        externalValueObject.setExpirationMonth(12);
+        externalValueObject.setExpirationYear(16);
+        
+        return externalValueObject;
+    }
+    
+    
 }

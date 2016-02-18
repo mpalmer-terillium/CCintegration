@@ -5,8 +5,6 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
-import javax.xml.ws.BindingType;
-
 import static src.com.paytrace.integration.constants.IntegrationConstants.ERROR;
 import static src.com.paytrace.integration.constants.IntegrationConstants.PROCESSING_ERROR_MSG;
 import src.com.paytrace.integration.internalprocessor.InternalIntegrationProcessor;

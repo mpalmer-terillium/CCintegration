@@ -28,7 +28,8 @@ public class InternalIntegrationProcessor {
     
     /**
      * This is the internal integration processor method, which passes off the internal value object
-     * to the init method
+     * to the init method.
+     * 
      * @param internalVO
      */
     public InternalIntegrationProcessor(InternalValueObject internalVO) {
@@ -37,7 +38,8 @@ public class InternalIntegrationProcessor {
     }
     
     /**
-     * Initialize the HttpClient object, the HttpPost object, and the NameValuePair list
+     * Initialize the HttpClient object, the HttpPost object, and the NameValuePair list.
+     * 
      * @param internalVO
      */
     protected void init(InternalValueObject internalVO) {
@@ -86,7 +88,8 @@ public class InternalIntegrationProcessor {
     }
     
     /**
-     * Getter for the errorFlag
+     * Getter for the errorFlag.
+     * 
      * @return int (error check constant)
      */
     public int errorCheck() {
