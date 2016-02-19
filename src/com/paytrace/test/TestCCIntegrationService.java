@@ -33,7 +33,8 @@ public class TestCCIntegrationService {
         if (scr.hasCredentials()) {
             
             externalValueObject.setUsername(scr.getUsername());
-            externalValueObject.setPassword(scr.getPassword());        externalValueObject.setParmName("PARMLIST");
+            externalValueObject.setPassword(scr.getPassword());        
+            externalValueObject.setParmName("PARMLIST");
             externalValueObject.setMethod("processtransx");
             externalValueObject.setTerms('Y');
             externalValueObject.setTransactionType("Authorization");
