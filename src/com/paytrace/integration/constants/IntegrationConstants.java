@@ -1,9 +1,6 @@
 package src.com.paytrace.integration.constants;
 
-/**
- * Most of these will be defined by the host system, and will be passed in from there.  They exist here to simplify
- * the development process, but eventually will go away.
- */
+
 public final class IntegrationConstants {
     
     public static final String PAY_TRACE                = "PayTrace";
@@ -13,7 +10,7 @@ public final class IntegrationConstants {
     public static final String INVALID_CODE             = "103";
     
     public static final String REQ_APPROVED             = " Response 101: Your transaction was successfully approved";
-    public static final String REQ_NOT_APPROVED         = " Response: 102: Your transaction was not approved";
+    public static final String REQ_NOT_APPROVED         = " Response 102: Your transaction was not approved";
     public static final String REQ_INVALID              = " Response 103: Your transaction was successfully approved. " +
                                                           "However, it was voided because your address and/or CSC did not match";
     public static final String REQ_ERROR                = " Response: Error ";    
@@ -31,11 +28,11 @@ public final class IntegrationConstants {
     public static final String USERNAME_TOKEN           = "un";
     public static final String PASSWORD_TOKEN           = "pswd";
     public static final String METHOD_TOKEN             = "method";
-    public static final String TRANSACTION_TYPE_TOKEN   = "tranxtype";
+    public static final String TRANSX_TYPE_TOKEN        = "tranxtype";
     public static final String TERMS_TOKEN              = "terms";
     public static final String CREDIT_CARD_TOKEN        = "CC";
-    public static final String EXPIRATION_MONTH_TOKEN   = "expmnth";
-    public static final String EXPIRATION_YEAR_TOKEN    = "expyr";
+    public static final String EXP_MONTH_TOKEN          = "expmnth";
+    public static final String EXP_YEAR_TOKEN           = "expyr";
     public static final String AMOUNT_TOKEN             = "amount";
     public static final String ADDRESS_TOKEN            = "baddress";
     public static final String ZIP_TOKEN                = "bzip";
@@ -52,5 +49,5 @@ public final class IntegrationConstants {
     public static final String TRANS_TYPE_CAPTURE       = "Capture";
     public static final String TRANS_TYPE_VERIFY        = "Verify";
     
-    
+    public static final String SOFTCODING_URI           = "http://127.0.0.1:7101/MockSoftCodingService/softcoding/credentials/getUnPwd";
 }

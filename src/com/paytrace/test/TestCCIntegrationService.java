@@ -30,17 +30,23 @@ public class TestCCIntegrationService {
 
         SoftCodingCredentials scr = IntegrationUtility.securitySetup();
         
-        externalValueObject.setUsername(scr.getUsername());
-        externalValueObject.setPassword(scr.getPassword());
+        if (scr.hasCredentials()) {
+            
+            externalValueObject.setUsername(scr.getUsername());
+            externalValueObject.setPassword(scr.getPassword());        externalValueObject.setParmName("PARMLIST");
+            externalValueObject.setMethod("processtransx");
+            externalValueObject.setTerms('Y');
+            externalValueObject.setTransactionType("Authorization");
+            externalValueObject.setAmount(100.00);
+            externalValueObject.setCreditCardNumber("4012881888818888");
+            externalValueObject.setExpirationMonth(12);
+            externalValueObject.setExpirationYear(16);
+            
+        } else {
+            
+        }
         
-        externalValueObject.setParmName("PARMLIST");
-        externalValueObject.setMethod("processtransx");
-        externalValueObject.setTerms('Y');
-        externalValueObject.setTransactionType("Authorization");
-        externalValueObject.setAmount(100.00);
-        externalValueObject.setCreditCardNumber("4012881888818888");
-        externalValueObject.setExpirationMonth(12);
-        externalValueObject.setExpirationYear(16);
+        
         
         return externalValueObject;
     }

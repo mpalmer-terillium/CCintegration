@@ -24,4 +24,8 @@ public class SoftCodingCredentials{
     public String getPassword() {
         return password;
     }
+    
+    public boolean hasCredentials() {
+        return this.username != null && this.password != null;
+    }
 }

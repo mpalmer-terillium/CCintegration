@@ -86,15 +86,16 @@ public class IntegrationUtility {
      */
     public static String createParameterList(InternalValueObject internalVO) {
         
-        return tokenize(USERNAME_TOKEN, internalVO.getUn()) + 
-               tokenize(PASSWORD_TOKEN, internalVO.getPswd()) +
-               tokenize(METHOD_TOKEN, internalVO.getMethod()) +
-               tokenize(TRANSACTION_TYPE_TOKEN, internalVO.getTransxtype()) +
-               tokenize(TERMS_TOKEN, internalVO.getTerms() + "") +
-               tokenize(CREDIT_CARD_TOKEN, internalVO.getCc()) + 
-               tokenize(EXPIRATION_MONTH_TOKEN, internalVO.getExpmnth() + "") +
-               tokenize(EXPIRATION_YEAR_TOKEN, internalVO.getExpyr() + "") +
-               tokenize(AMOUNT_TOKEN, internalVO.getAmt() + "");
+        return 
+               tokenize(CREDIT_CARD_TOKEN,  internalVO.getCc()) + 
+               tokenize(USERNAME_TOKEN,     internalVO.getUn()) + 
+               tokenize(PASSWORD_TOKEN,     internalVO.getPswd()) +
+               tokenize(METHOD_TOKEN,       internalVO.getMethod()) +
+               tokenize(TRANSX_TYPE_TOKEN,  internalVO.getTransxtype()) +
+               tokenize(TERMS_TOKEN,        String.valueOf(internalVO.getTerms())) +
+               tokenize(EXP_MONTH_TOKEN,    String.valueOf(internalVO.getExpmnth())) +
+               tokenize(EXP_YEAR_TOKEN,     String.valueOf(internalVO.getExpyr())) +
+               tokenize(AMOUNT_TOKEN,       String.valueOf(internalVO.getAmt()));
     }
     
     /**
@@ -161,6 +162,11 @@ public class IntegrationUtility {
         return pre + "~" + post + "|";
     }
     
+    
+    /**
+     * public method to call the REST mock softcoding service.
+     * @return
+     */
     public static SoftCodingCredentials securitySetup() {
         return setUsernamePassword(new SoftCodingCredentials());
     }
@@ -174,7 +180,7 @@ public class IntegrationUtility {
      */
     private static SoftCodingCredentials setUsernamePassword(SoftCodingCredentials scr) {
         try {
-            URL url = new URL("http://127.0.0.1:7101/MockSoftCodingService/softcoding/credentials/getUnPwd");
+            URL url = new URL(SOFTCODING_URI);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", "application/xml");
