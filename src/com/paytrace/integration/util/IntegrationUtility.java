@@ -30,15 +30,16 @@ public class IntegrationUtility {
      */
     public static InternalValueObject initVO(ExternalValueObject evo) {
         InternalValueObject internalVO;
+        SoftCodingCredentials scr = securitySetup();
         
-        if (evo.getTransactionType().isEmpty()) {
+        if (evo.getTransactionType().isEmpty() || !scr.hasCredentials()) {
             internalVO = new InternalValueObject(ERROR);
             
         }else if (evo.getTransactionType().equalsIgnoreCase(TRANS_TYPE_AUTHORIZATION) ||
             evo.getTransactionType().equalsIgnoreCase(TRANS_TYPE_SALE)) {
             
-            internalVO = new InternalValueObject(evo.getUsername(), 
-                                                 evo.getPassword(), 
+            internalVO = new InternalValueObject(scr.getUsername(), //evo.getUsername(), 
+                                                 scr.getPassword(), //evo.getPassword(), 
                                                  evo.getMethod(), 
                                                  evo.getTransactionType(), 
                                                  evo.getTerms(),
@@ -52,8 +53,8 @@ public class IntegrationUtility {
             
         } else if (evo.getTransactionType().equalsIgnoreCase(TRANS_TYPE_CAPTURE)) {
             
-            internalVO = new InternalValueObject(evo.getUsername(), 
-                                                 evo.getPassword(), 
+            internalVO = new InternalValueObject(scr.getUsername(), //evo.getUsername(), 
+                                                 scr.getPassword(), //evo.getPassword(),, 
                                                  evo.getMethod(), 
                                                  evo.getTransactionType(), 
                                                  evo.getTerms(),
