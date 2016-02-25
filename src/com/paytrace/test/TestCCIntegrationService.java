@@ -13,7 +13,8 @@ public class TestCCIntegrationService {
     private static Logger logger = Logger.getLogger("CCIntegration Test");
     
     /**
-     * This is a shell for a test method - this will not run as is, but is a start
+     * Test method used to validate that the service is working for value objects (not SOAP requests).
+     * Uses softcoding, so the softcoding service must also be present, or else un / pw values must be entered.
      * @param args
      */
     public static void main(String[] args) {
@@ -45,10 +46,17 @@ public class TestCCIntegrationService {
             
         } else {
             
+            externalValueObject.setUsername("Enter username here!");
+            externalValueObject.setPassword("Enter password here!");        
+            externalValueObject.setParmName("PARMLIST");
+            externalValueObject.setMethod("processtransx");
+            externalValueObject.setTerms('Y');
+            externalValueObject.setTransactionType("Authorization");
+            externalValueObject.setAmount(100.00);
+            externalValueObject.setCreditCardNumber("4012881888818888");
+            externalValueObject.setExpirationMonth(12);
+            externalValueObject.setExpirationYear(16);
         }
-        
-        
-        
         return externalValueObject;
     }
     
